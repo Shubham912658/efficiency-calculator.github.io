@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Efficiency Calculator</title>
+    <style>
+      body {
+        background-color: #242424;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 50px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .heading {
+        font-size: 36px;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .form-group {
+        margin-bottom: 30px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      input[type="number"] {
+        background-color: #2e2e2e;
+        border: none;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #eb6709;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      button:hover {
+        background-color: #ff9700;
+      }
+
+      .output-label {
+        display: block;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 50px 0 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      output {
+        display: block;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 50px;
+      }
+    </style>
+    <script>
+      function calculate1() {
+        // Get the values of the input fields
+        var pc = parseFloat(document.getElementById("pc").value);
+        var at = parseFloat(document.getElementById("at").value);
+        var massFlowRate = parseFloat(document.getElementById("massFlowRate").value);
+
+        // Calculate C*-Star using the formula
+        var cStar = (pc * at) / massFlowRate;
+
+        // Display the result in the output field
+        document.getElementById("cStarOutput").innerHTML = cStar.toFixed(2);
+      }
+      
+      function calculate2() {
+        var thrust = parseFloat(document.getElementById("thrust").value);
+        var massFlowRate1 = parseFloat(document.getElementById("massFlowRate1").value);
+        var g = parseFloat(document.getElementById("g").value);
+
+        var isp = thrust / (massFlowRate1 * g);
+
+        document.getElementById("ispOutput").innerHTML = isp.toFixed(2);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>MANASTU SPACE </h1>
+
+    <h2> C-Star Calculator </h2>
+    <label for="pc">Pc:</label>
+    <input type="number" id="pc"><br><br>
+    <label for="at">At:</label>
+    <input type="number" id="at"><br><br>
+    <label for="massFlowRate">Mass Flow Rate:</label>
+    <input type="number" id="massFlowRate"><br><br>
+    <button onclick="calculate1()">Calculate C*-Star</button><br><br>
+    <label for="cStarOutput">C*-Star:</label>
+    <output id="cStarOutput"></output>
+
+    <h2>ISP Calculator</h2>
+    <label for="thrust">Thrust:</label>
+    <input type="number" id="thrust"><br><br>
+    <label for="massFlowRate1">Mass Flow Rate 1:</label>
+    <input type="number" id="massFlowRate1"><br><br>
+    <label for="g">g:</label>
+    <input type="number" id="g"><br><br>
+    <button onclick="calculate2()">Calculate C*-Star</button><br><br>
+    <label for="ispOutput">ISP:</label>
+    <output id="ispOutput"></output>
